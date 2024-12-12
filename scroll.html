@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentorship Plans</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Section Title and Description */
+    .pricing-area-header {
+      text-align: center;
+      padding: 50px 0;
+    }
+
+    .pricing-area-header h2 {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .pricing-area-header p {
+      font-size: 18px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* Cards Wrapper */
+    .cards-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 50px 0;
+      height: 300vh; /* Long enough for all cards to scroll smoothly */
+      position: relative;
+    }
+
+    /* Styling for all cards */
+    .card__content {
+      width: 80%;
+      max-width: 400px;
+      height: 350px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px;
+      color: #333;
+      position: relative;
+      z-index: 1;
+      opacity: 0.8;
+      transition: transform 0.3s ease, z-index 0.3s ease, opacity 0.3s ease;
+    }
+
+    .card__content.sticky {
+      position: sticky;
+      top: 20px; /* Adjust the sticky top position */
+      z-index: 999; /* High z-index to appear on top */
+      opacity: 1;   /* Fully visible when sticky */
+      transform: scale(1); /* Scale to original size */
+    }
+
+    .card__content h3 {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .card__content p.price {
+      font-size: 32px;
+      color: #333;
+      margin: 10px 0;
+    }
+
+    .card__content ol {
+      padding-left: 20px;
+      text-align: left;
+      font-size: 16px;
+    }
+
+    .card__content ol li {
+      margin-bottom: 10px;
+    }
+
+    .tm-button {
+      background-color: #007bff;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 18px;
+      display: block;
+    }
+
+    .tm-button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Desktop View */
+    @media (min-width: 768px) {
+      .cards-wrapper {
+        flex-direction: row;
+        overflow-y: hidden;
+        height: auto;
+        padding: 50px;
+      }
+
+      .card__content {
+        transform: scale(1);
+        z-index: 1;
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="px-3">
+    <div class="container price-section">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-12">
+          <div class="service-area-title">
+            <div class="tm-section pricing-area-header">
+              <h2 class="title">Our Mentorship Plans</h2>
+              <p>
+                Gold gladiators offer you three types of courses designed to take you from an absolute beginner to an advanced profitable trader.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cards" class="cards-wrapper">
+    <!-- Card 1 -->
+    <div class="card__content" data-index="1">
+      <h3>Basic Forex Foundation</h3>
+      <p class="price">$00</p>
+      <ol>
+        <li>Basics of Forex</li>
+        <li>Technical and Fundamental Analysis</li>
+        <li>20 Live Sessions (2-3 hours each)</li>
+        <li>Recording of Every Session</li>
+        <li>Special Trading Strategy</li>
+        <li>Access to Telegram Channel</li>
+        <li>$50 Free Deposit on MT5</li>
+        <li>24/7 Support on Call</li>
+      </ol>
+      <a href="#" class="tm-button">Sign Up Now</a>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card__content" data-index="2">
+      <h3>Elite Forex Mastery</h3>
+      <p class="price">$000</p>
+      <ol>
+        <li>15 Sessions Total</li>
+        <li>Limited Seats (15 Students per Batch)</li>
+        <li>Daily 3-4 Hours of Discussion</li>
+        <li>Session Recordings</li>
+        <li>Private Zoom Call Access</li>
+        <li>Special Sessions on Risk Management</li>
+        <li>Higher Timeframe Analysis and Setups</li>
+        <li>24/7 Support</li>
+      </ol>
+      <a href="#" class="tm-button">Sign Up Now</a>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card__content" data-index="3">
+      <h3>Master Trader Program</h3>
+      <p class="price">$000</p>
+      <ol>
+        <li>All Sessions are 1-on-1</li>
+        <li>10 Sessions with Recordings</li>
+        <li>Overcoming Trading Losses</li>
+        <li>Roadmap for Consistency</li>
+        <li>Advanced Risk Management</li>
+        <li>Price Action Higher Timeframe Strategy</li>
+        <li>Backtesting Strategies</li>
+        <li>Live Market Zoom Calls</li>
+      </ol>
+      <a href="#" class="tm-button">Sign Up Now</a>
+    </div>
+  </section>
+
+  <script>
+    const $cards = document.querySelectorAll('.card__content');
+
+    // Create an IntersectionObserver instance
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const card = entry.target;
+        const cardIndex = parseInt(card.dataset.index, 10);
+        
+        if (entry.isIntersecting) {
+          card.classList.add('sticky');
+        } else {
+          card.classList.remove('sticky');
+        }
+      });
+    }, { threshold: 0 });  // Trigger sticky behavior as soon as the card is fully in view
+
+    // Observe each card
+    $cards.forEach(card => {
+      observer.observe(card);
+    });
+  </script>
+
+</body>
+</html>
